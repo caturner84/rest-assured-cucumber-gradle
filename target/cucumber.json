@@ -1,0 +1,48 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2022-01-29T16:07:56.052Z",
+        "line": 3,
+        "name": "Testing",
+        "description": "",
+        "id": "this-is-the-feature-file;testing",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2512962300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I call the endpoint",
+            "match": {
+              "location": "stepDefinitions.Customer.i_call_the_endpoint()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 555829700,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I should see the response",
+            "match": {
+              "location": "stepDefinitions.Customer.i_should_see_the_response()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "This is the feature file",
+    "description": "",
+    "id": "this-is-the-feature-file",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/test.feature",
+    "tags": []
+  }
+]

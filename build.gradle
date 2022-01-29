@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.24"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    testImplementation 'io.cucumber:cucumber-java:5.2.0'
+    testImplementation 'io.cucumber:cucumber-junit:5.2.0'
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.3'
+
+    implementation group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--plugin', 'json:target/cucumber.json', '--glue', 'stepDefinitions', 'src/test/resources', '--tags', '']
+        }
+    }
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+cucumberReports {
+    outputDir = file('CucumberReports')
+    reports = files('target/cucumber.json')
+}

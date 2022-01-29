@@ -1,0 +1,4 @@
+
+Scenario: Testing                # src/test/resources/features/test.feature:3
+  Given I call the endpoint      # stepDefinitions.Customer.i_call_the_endpoint()
+  Then I should see the response # stepDefinitions.Customer.i_should_see_the_response()
